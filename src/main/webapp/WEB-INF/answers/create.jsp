@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create Questions</title>
+<title>Create Answers</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/main.css">
 <!-- change to match your file/naming structure -->
@@ -21,11 +21,22 @@
 
 </head>
 <body>
-	<h1>Create Questions</h1>
+	<h1>Create Answers</h1>
 
-	<form:form action="/questions" method="post" modelAttribute="question">
+	<form:form action="/answers/create" method="post" modelAttribute="answer">
+		
 		<p>
-			<form:label path="name">Question:</form:label>
+			<form:label path="Question">Question:</form:label>
+			<form:errors path="Question" />
+			<form:select path="Question">
+			  <c:forEach items="${questions}" var="question">
+	           <option value="${question.id}">${question.name}</option>
+	    	</c:forEach>
+			</form:select>
+		</p>
+		
+		<p>
+			<form:label path="name">Answer:</form:label>
 			<form:errors path="name" />
 			<form:input path="name" />
 		</p>

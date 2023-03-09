@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -23,8 +24,7 @@ public class Question {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-	
-	private String question;
+	private String name;
 	
     @Column(updatable=false)
     private Date createdAt;
@@ -38,48 +38,33 @@ public class Question {
     )
     private List<Tag> tags;
     
-    @OneToMany(mappedBy="answer", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="question", fetch = FetchType.LAZY)
     private List<Answer> answers;
     
-    
-
-
+    public Question() {
+    	
+    	
+    }
 
 
 	public Long getId() {
 		return id;
 	}
 
-
-
-
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
-
-
-	public String getQuestion() {
-		return question;
+	public String getName() {
+		return name;
 	}
-
-
-
-
-	public void setQuestion(String question) {
-		this.question = question;
+	public void setName(String question) {
+		this.name = question;
 	}
-
-
-
 
 	public Date getCreatedAt() {
 		return createdAt;
 	}
-
-
-
 
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;

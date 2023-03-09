@@ -13,12 +13,7 @@ import com.codingdojo.dojooverflow.models.Tag;
 public interface AnswerRepository extends CrudRepository<Answer, Long>{
 	
 	List<Answer> findAll();
-    // Retrieves a list of all categories for a particular product
-    List<Answer> findAllByQuestion(Question question);
-    
-    // Retrieves a list of any categories a particular product
-    // does not belong to.
-    List<Answer> findByQuestionNotContains(Question question);
+    List<Answer> findByQuestion(Long id);
 	
 
 }

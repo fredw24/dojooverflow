@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create Questions</title>
+<title>Create Tags</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/main.css">
 <!-- change to match your file/naming structure -->
@@ -21,11 +21,14 @@
 
 </head>
 <body>
-	<h1>Create Questions</h1>
 
-	<form:form action="/questions" method="post" modelAttribute="question">
+<h1>Create Tags</h1>
+
+
+<form:form action="/tags" method="post" modelAttribute="tag">
+		
 		<p>
-			<form:label path="name">Question:</form:label>
+			<form:label path="name">Tag:</form:label>
 			<form:errors path="name" />
 			<form:input path="name" />
 		</p>

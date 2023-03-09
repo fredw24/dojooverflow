@@ -18,5 +18,7 @@ public interface TagRepository extends CrudRepository<Tag, Long> {
     // Retrieves a list of any categories a particular product
     // does not belong to.
     List<Tag> findByQuestionsNotContains(Question question);
+    
+    Boolean existsByNameContaining(String search);
 	
 }

@@ -1,6 +1,7 @@
 package com.codingdojo.dojooverflow.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -29,16 +30,19 @@ private final AnswerRepository answerRepository;
 		return answerRepository.save(answer);
 		
 	}
-	
-	public List<Answer> findNotContainQuestion(Question question){
-		   List<Answer> findNot = answerRepository.findByQuestionNotContains(question);
-		   return findNot;
-		   
-	}
 	   
-	public List<Answer> findContainQuestion(Question question){
-	   List<Answer> findOne = answerRepository.findAllByQuestion(question);
-	   return findOne;
+	public Answer findAnswer(Long id){
+		Optional<Answer> optionalAnswer = answerRepository.findById(id);
+        if(optionalAnswer.isPresent()) {
+            return optionalAnswer.get();
+        } else {
+            return null;
+        }
+	}
+	
+	public List<Answer> findAllByQuestion(Long id){
+		
+        return answerRepository.findByQuestion(id);
 	}
 	   
 
