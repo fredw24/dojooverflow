@@ -13,8 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tags_questions")
-public class TagQuestion {
+@Table(name="questions_tags")
+public class QuestionTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,7 +29,7 @@ public class TagQuestion {
     @JoinColumn(name="tag_id")
     private Tag tag;
     
-    public TagQuestion() {
+    public QuestionTag() {
         
     }
 }
