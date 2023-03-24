@@ -24,12 +24,12 @@ import com.codingdojo.dojooverflow.services.TagService;
 public class QuestionsController {
 
 	private final QuestionService questionService;
-	private final AnswerService answerService;
+	//private final AnswerService answerService;
 	private final TagService tagService;
 	
 	public QuestionsController(QuestionService questionService, AnswerService answerService, TagService tagService) {
 		this.questionService = questionService;
-		this.answerService = answerService;
+		//this.answerService = answerService;
 		this.tagService = tagService;
 		
 	}
@@ -73,7 +73,7 @@ public class QuestionsController {
 		model.addAttribute("question", oneQuestion);	
 		model.addAttribute("notTag", notTagList);
 		
-		if (oneQuestion.getTags().size() == 3) {
+		if (oneQuestion.getQuestionTagList().size() == 3) {
 			return "redirect:/questions";
 		}
 		else {
@@ -105,9 +105,9 @@ public class QuestionsController {
         } else {
         	
         	System.out.println(question.getId());
-        	System.out.println(question.getTags().get(0).getId());
+        	System.out.println(question.getQuestionTagList().get(0).getId());
         		
-        	questionService.linkTag(question.getId(), question.getTags().get(0).getId());
+        	questionService.linkTag(question.getId(), question.getQuestionTagList().get(0).getId());
             return "redirect:/questions";
         }
     }

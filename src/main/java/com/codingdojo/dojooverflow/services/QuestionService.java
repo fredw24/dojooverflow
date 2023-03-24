@@ -68,10 +68,10 @@ public class QuestionService {
 	    Optional<Tag> thisTag = tagRepository.findById(tagId);
 	    
 	    // add the product to this category's list of products
-	    thisQuestion.get().getTags().add(thisTag.get());
+	    //thisQuestion.get().getQuestionTagList().
 	    
 	    // Save thisCategory, since you made changes to its product list.
-	    questionRepository.save(thisQuestion.get());
+	    //questionRepository.save(thisQuestion.get());
 	}
 
 }

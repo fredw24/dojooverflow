@@ -21,6 +21,7 @@ import javax.persistence.JoinColumn;
 @Table(name="question")
 public class Question {
 	
+	// tables for the Question
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,22 +31,31 @@ public class Question {
     private Date createdAt;
     private Date updatedAt;
     
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "questions_tags", 
-        joinColumns = @JoinColumn(name = "question_id"), 
-        inverseJoinColumns = @JoinColumn(name = "tag_id")
-    )
-    private List<Tag> tags;
     
-    @OneToMany(mappedBy="question", fetch = FetchType.LAZY)
-    private List<Answer> answers;
+    // link it with Question
+    // this is the code that I had before Jon showed me
+//    @OneToMany(fetch = FetchType.LAZY)
+//    @JoinTable(
+//        name = "questions_tags", 
+//        joinColumns = @JoinColumn(name = "question_id"), 
+//        inverseJoinColumns = @JoinColumn(name = "tag_id")
+//    )
+//    private List<Tag> tags;
+    
+    // many to many for Question to Tag respectively
+    @OneToMany(mappedBy="Question", fetch = FetchType.LAZY)
+    private List<QuestionTag> questionTagList;
+    
+
+//    // One to Many for question to answer respectively
+//    @OneToMany(mappedBy="Question", fetch = FetchType.LAZY)
+//    private List<Answer> answerList;
     
     public Question() {
     	
     	
     }
-
+    // getter and setter
 
 	public Long getId() {
 		return id;
@@ -58,8 +68,9 @@ public class Question {
 	public String getName() {
 		return name;
 	}
-	public void setName(String question) {
-		this.name = question;
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Date getCreatedAt() {
@@ -70,47 +81,32 @@ public class Question {
 		this.createdAt = createdAt;
 	}
 
-
-
-
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}
-
-
-
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 
-
-
-
-	public List<Tag> getTags() {
-		return tags;
+	public List<QuestionTag> getQuestionTagList() {
+		return questionTagList;
 	}
 
-
-
-
-	public void setTags(List<Tag> tags) {
-		this.tags = tags;
+	public void setQuestionTagList(List<QuestionTag> questionTagList) {
+		this.questionTagList = questionTagList;
 	}
 
+//	public List<Answer> getAnswerList() {
+//		return answerList;
+//	}
+//
+//	public void setAnswerList(List<Answer> answerList) {
+//		this.answerList = answerList;
+//	}
 
 
-
-	public List<Answer> getAnswers() {
-		return answers;
-	}
-
-
-
-
-	public void setAnswers(List<Answer> answers) {
-		this.answers = answers;
-	}
     
+    // end getter and setters
     
-}
+} //end model
